@@ -37,18 +37,18 @@ class looping {
 
         // ----------------- Do-While LOOP -----------------
 
-        int num;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter Number ");
-        num = sc.nextInt();
+        // int num;
+        // Scanner sc = new Scanner(System.in);
+        // System.out.println("Enter Number ");
+        // num = sc.nextInt();
 
-        do {
-            System.out.println(num);
-            ++ num;
-        }
-        //plea do thse pachi while thse 
-        // aagar 10 karta moti hase toi ek var do to run thse j 
-        while(num <= 10);
+        // do {
+        //     System.out.println(num);
+        //     ++ num;
+        // }
+        // //plea do thse pachi while thse 
+        // // aagar 10 karta moti hase toi ek var do to run thse j 
+        // while(num <= 10);
        
 
     }
