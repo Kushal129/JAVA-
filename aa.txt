@@ -1,0 +1,70 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+class Pair<T, U> {
+    private T first;
+    private U second;
+
+    public Pair(T first, U second) {
+        this.first = first;
+        this.second = second;
+    }
+
+    public T getFirst() {
+        return first;
+    }
+
+    public U getSecond() {
+        return second;
+    }
+}
+
+class DataProcessor {
+    public static <T> void displayArray(T[] array) {
+        System.out.print("Array Elements: ");
+        for (T element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+    }
+
+    public static <T, U, V> void displayThreeParams(T param1, U param2, V param3) {
+        System.out.println("First Parameter: " + param1);
+        System.out.println("Second Parameter: " + param2);
+        System.out.println("Third Parameter: " + param3);
+    }
+}
+
+public class GenericExample {
+    public static void main(String[] args) {
+        // Example 1: Generic Pair class
+        Pair<String, Integer> pair1 = new Pair<>("John", 25);
+        Pair<Double, String> pair2 = new Pair<>(3.14, "Pi");
+
+        System.out.println("Pair 1: " + pair1.getFirst() + ", " + pair1.getSecond());
+        System.out.println("Pair 2: " + pair2.getFirst() + ", " + pair2.getSecond());
+
+        // Example 2: Generic methods
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        DataProcessor.displayArray(intArray);
+        
+        String str = "Hello";
+        Double value = 10.5;
+        Character ch = 'A';
+        DataProcessor.displayThreeParams(str, value, ch);
+
+        // Example 3: Generic collections
+        ArrayList<String> stringList = new ArrayList<>();
+        stringList.add("Java");
+        stringList.add("Python");
+        stringList.add("C++");
+
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+
+        System.out.println("String List: " + stringList);
+        System.out.println("Map: " + map);
+    }
+}
