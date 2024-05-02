@@ -1,14 +1,17 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Creating an ArrayList
+        Scanner scanner = new Scanner(System.in);
         ArrayList<String> arrayList = new ArrayList<>();
 
-        // Adding elements to the ArrayList
-        arrayList.add("Apple");
-        arrayList.add("Banana");
-        arrayList.add("Orange");
+        // Adding elements to the ArrayList based on user input
+        System.out.println("Enter fruits to add to the ArrayList (type 'done' when finished):");
+        String input;
+        while (!(input = scanner.nextLine()).equalsIgnoreCase("done")) {
+            arrayList.add(input);
+        }
 
         // Accessing elements
         System.out.println("Elements in the ArrayList:");
@@ -19,14 +22,19 @@ public class Main {
         // Getting the size of the ArrayList
         System.out.println("Size of the ArrayList: " + arrayList.size());
 
-        // Removing an element
-        arrayList.remove("Banana");
+        // Removing an element based on user input
+        System.out.println("Enter a fruit to remove from the ArrayList:");
+        String fruitToRemove = scanner.nextLine();
+        arrayList.remove(fruitToRemove);
 
-        // Checking if an element exists
-        System.out.println("Does the ArrayList contain Banana? " + arrayList.contains("Banana"));
+        // Checking if an element exists based on user input
+        System.out.println("Enter a fruit to check if it exists in the ArrayList:");
+        String fruitToCheck = scanner.nextLine();
+        System.out.println("Does the ArrayList contain " + fruitToCheck + "? " + arrayList.contains(fruitToCheck));
+
+        scanner.close();
     }
 }
-
 
 
 
