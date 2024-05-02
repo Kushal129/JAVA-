@@ -1,4 +1,77 @@
 import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an ArrayList
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        // Adding elements to the ArrayList
+        arrayList.add("Apple");
+        arrayList.add("Banana");
+        arrayList.add("Orange");
+
+        // Accessing elements
+        System.out.println("Elements in the ArrayList:");
+        for (String fruit : arrayList) {
+            System.out.println(fruit);
+        }
+
+        // Getting the size of the ArrayList
+        System.out.println("Size of the ArrayList: " + arrayList.size());
+
+        // Removing an element
+        arrayList.remove("Banana");
+
+        // Checking if an element exists
+        System.out.println("Does the ArrayList contain Banana? " + arrayList.contains("Banana"));
+    }
+}
+
+
+
+
+
+
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Adding elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Accessing elements
+        System.out.println("Elements in the LinkedList:");
+        for (String fruit : linkedList) {
+            System.out.println(fruit);
+        }
+
+        // Getting the size of the LinkedList
+        System.out.println("Size of the LinkedList: " + linkedList.size());
+
+        // Removing an element
+        linkedList.remove("Banana");
+
+        // Checking if an element exists
+        System.out.println("Does the LinkedList contain Banana? " + linkedList.contains("Banana"));
+    }
+}
+
+
+
+
+
+
+
+
+----------------------------------------------------
+
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 class Pair<T, U> {
