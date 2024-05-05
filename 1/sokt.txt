@@ -1,0 +1,106 @@
+server:- 
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class server {
+
+	public static void main(String[] args) {
+		try {
+			//1:- create a sokt
+			ServerSocket ss = new ServerSocket(5000);
+			System.out.println("Waiting for client.");
+			
+			// create soket server side
+			Socket cs = ss.accept();
+			System.out.println("Client connected.");
+			
+			
+			// data transfer sever to client 
+			BufferedReader clntinput = new BufferedReader(new InputStreamReader(cs.getInputStream()));
+            PrintWriter sout = new PrintWriter(cs.getOutputStream(), true);
+            BufferedReader sin = new BufferedReader(new InputStreamReader(System.in));
+
+			Scanner sc = new Scanner(System.in);
+			String data, send;
+			
+			while (true) {
+				data = clntinput.readLine();
+	            System.out.println("Client: " + data);
+	            
+	            if (data.equalsIgnoreCase("bye")) {
+                    System.out.println("Client disconect. Server close");
+                    break;
+                }
+	            System.out.print("Server: ");
+	            send = sin.readLine();
+	            sout.println(send);
+				
+			}
+			// write data kare soket ma ne clear the buffer
+			sout.flush();
+			cs.close();
+            ss.close();
+            sc.close();
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+}
+
+
+
+clinet:- 
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class clinet {
+
+	public static void main(String[] args) {
+		try {
+			// create skt obje
+			
+			Socket ss = new Socket("localhost", 5000);
+            System.out.println("Connected to server.");
+			
+			// bfr red.. use karu karan ke eni pase potnau che external buf.. 
+			// read mor data also  line by line read 
+		       BufferedReader br = new BufferedReader(new InputStreamReader(ss.getInputStream()));
+	           PrintWriter clntout = new PrintWriter(ss.getOutputStream(), true);
+	           BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+			// inputS sukam :- Soket acpt only Binary. ene convert buferR Character oriented data. 
+			// mate InputStr use karu Automatic convert. br ma store hse line by line joavna pachi while thi.
+			
+			// read data form server
+	           String data, send;
+	           while (true) {
+	        	   System.out.print("Client:- ");
+	        	   send = in.readLine();
+	        	   clntout.println(send);
+
+	        	   data = br.readLine();
+	        	   System.out.println("Server:- " + data);
+
+	        	   if (send.equalsIgnoreCase("bye")) {
+	        		   System.out.println("Exiting...!!");
+	        		   break;
+	        		   }
+	           }
+			 ss.close();
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+}
