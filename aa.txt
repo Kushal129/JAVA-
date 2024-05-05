@@ -1,0 +1,151 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        // Adding elements to the ArrayList based on user input
+        System.out.println("Enter fruits to add to the ArrayList (type 'done' when finished):");
+        String input;
+        while (!(input = scanner.nextLine()).equalsIgnoreCase("done")) {
+            arrayList.add(input);
+        }
+
+        // Accessing elements
+        System.out.println("Elements in the ArrayList:");
+        for (String fruit : arrayList) {
+            System.out.println(fruit);
+        }
+
+        // Getting the size of the ArrayList
+        System.out.println("Size of the ArrayList: " + arrayList.size());
+
+        // Removing an element based on user input
+        System.out.println("Enter a fruit to remove from the ArrayList:");
+        String fruitToRemove = scanner.nextLine();
+        arrayList.remove(fruitToRemove);
+
+        // Checking if an element exists based on user input
+        System.out.println("Enter a fruit to check if it exists in the ArrayList:");
+        String fruitToCheck = scanner.nextLine();
+        System.out.println("Does the ArrayList contain " + fruitToCheck + "? " + arrayList.contains(fruitToCheck));
+
+        scanner.close();
+    }
+}
+
+
+
+
+
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Adding elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Accessing elements
+        System.out.println("Elements in the LinkedList:");
+        for (String fruit : linkedList) {
+            System.out.println(fruit);
+        }
+
+        // Getting the size of the LinkedList
+        System.out.println("Size of the LinkedList: " + linkedList.size());
+
+        // Removing an element
+        linkedList.remove("Banana");
+
+        // Checking if an element exists
+        System.out.println("Does the LinkedList contain Banana? " + linkedList.contains("Banana"));
+    }
+}
+
+
+
+
+
+
+
+
+----------------------------------------------------
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+class Pair<T, U> {
+    private T first;
+    private U second;
+
+    public Pair(T first, U second) {
+        this.first = first;
+        this.second = second;
+    }
+
+    public T getFirst() {
+        return first;
+    }
+
+    public U getSecond() {
+        return second;
+    }
+}
+
+class DataProcessor {
+    public static <T> void displayArray(T[] array) {
+        System.out.print("Array Elements: ");
+        for (T element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+    }
+
+    public static <T, U, V> void displayThreeParams(T param1, U param2, V param3) {
+        System.out.println("First Parameter: " + param1);
+        System.out.println("Second Parameter: " + param2);
+        System.out.println("Third Parameter: " + param3);
+    }
+}
+
+public class GenericExample {
+    public static void main(String[] args) {
+        // Example 1: Generic Pair class
+        Pair<String, Integer> pair1 = new Pair<>("John", 25);
+        Pair<Double, String> pair2 = new Pair<>(3.14, "Pi");
+
+        System.out.println("Pair 1: " + pair1.getFirst() + ", " + pair1.getSecond());
+        System.out.println("Pair 2: " + pair2.getFirst() + ", " + pair2.getSecond());
+
+        // Example 2: Generic methods
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        DataProcessor.displayArray(intArray);
+        
+        String str = "Hello";
+        Double value = 10.5;
+        Character ch = 'A';
+        DataProcessor.displayThreeParams(str, value, ch);
+
+        // Example 3: Generic collections
+        ArrayList<String> stringList = new ArrayList<>();
+        stringList.add("Java");
+        stringList.add("Python");
+        stringList.add("C++");
+
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+
+        System.out.println("String List: " + stringList);
+        System.out.println("Map: " + map);
+    }
+}
